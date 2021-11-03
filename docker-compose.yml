@@ -11,14 +11,9 @@ services:
       - ./opt/docker/php-fpm/php.ini:/etc/php/7.1/fpm/conf.d/custom.ini
     links:
       - database
-    networks:
-      - default
-    external_links:
-      - webserver:conta.${APP_DOMAIN}
-      - webserver:admin.${APP_DOMAIN}
 
   node:
-    image: node:latest
+    image: node:12
     working_dir: /var/www
     volumes:
       - nfsmount:/var/www
@@ -53,8 +48,6 @@ services:
       - "80:80"
     links:
       - php
-    networks:
-      - default
 
 volumes:
   nfsmount:

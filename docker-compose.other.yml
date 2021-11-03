@@ -13,11 +13,9 @@ services:
       - database
     networks:
       - default
-    ports:
-      - "9000:9000"
 
   node:
-    image: node:latest
+    image: node:12
     working_dir: /var/www
     volumes:
       - ./:/var/www
@@ -26,7 +24,7 @@ services:
     image: composer:2.0.7
     working_dir: /var/www
     volumes:
-      - nfsmount:/var/www
+      - ./:/var/www
     links:
       - php
 
